@@ -7,6 +7,7 @@ const app = express();
 
 let metadata;
 try {
+    console.log("WORD DEV DAY EVER")
     const metadataPath = path.resolve(__dirname, 'metadata.json');
     const data = fs.readFileSync(metadataPath, 'utf8');
     metadata = JSON.parse(data);
