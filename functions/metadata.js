@@ -4,6 +4,8 @@ const serverless = require('serverless-http');
 const app = express();
 const router = express.Router();
 
+app.use(cors());
+
 const metadata = {
     "1": {
         "name": "bloke #1",
@@ -74216,10 +74218,6 @@ const metadata = {
 console.log("First bit of metadata:", JSON.stringify(metadata, null, 2).substring(0, 500));
 
 router.get('/metadata/:id', (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
     const id = req.params.id;
     console.log(`Received request for metadata ID: ${id}`);
     const item = metadata[id];
